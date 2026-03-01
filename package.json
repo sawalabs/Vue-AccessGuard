@@ -1,5 +1,6 @@
 {
   "name": "vue-accessguard",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
