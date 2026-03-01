@@ -169,7 +169,12 @@ Vue-accessguard scales linearly with enterprise needs with built in string-based
 
 ## Storybook
 
-You can visually test permission mocking by launching Storybook locally:
+Interactive visual documentation is available online:
+👉 **[View Live Storybook Documentation](https://sawalabs.github.io/Vue-AccessGuard/)**
+
+### Running Locally
+
+You can also visually test permission mocking by launching Storybook locally:
 
 ```bash
 pnpm run storybook
