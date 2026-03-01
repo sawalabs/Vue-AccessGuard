@@ -1,6 +1,9 @@
 {
   "name": "@sawalabs/vue-accessguard",
-  "private": false,
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "1.0.0",
   "type": "module",
   "main": "dist/vue-access-guard.umd.js",
