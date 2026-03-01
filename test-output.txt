@@ -1,0 +1,50 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/Users/man/AccessGuard[39m
+
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mbasic functionality[2m > [22mshould return false if user has no permissions[32m 1[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mbasic functionality[2m > [22mshould return true for exact matches[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mbasic functionality[2m > [22mshould return false for non-matching permissions[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mwildcard matching[2m > [22mshould return true if super admin wildcard * is present[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mwildcard matching[2m > [22mshould return true for resource-specific wildcard[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mwildcard matching[2m > [22mshould return false if resource-specific wildcard does not match[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mmatch modes ("any" vs "all")[2m > [22mmode: any (default)[2m > [22mshould return true if user has at least one required permission[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mmatch modes ("any" vs "all")[2m > [22mmode: any (default)[2m > [22mshould return false if user has none of the required permissions[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mmatch modes ("any" vs "all")[2m > [22mmode: all[2m > [22mshould return true if user has all required permissions[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mmatch modes ("any" vs "all")[2m > [22mmode: all[2m > [22mshould return false if user is missing some required permissions[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mmatch modes ("any" vs "all")[2m > [22mmode: all[2m > [22mshould work with single permission string format[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mmatch modes ("any" vs "all")[2m > [22mmixed wildcard and modes[2m > [22mshould evaluate "any" correctly with wildcards[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/core/matcher.test.ts[2m > [22mmatchPermission[2m > [22mmatch modes ("any" vs "all")[2m > [22mmixed wildcard and modes[2m > [22mshould evaluate "all" correctly with wildcards[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/router/routerGuard.test.ts[2m > [22mapplyAccessGuard (Router Guard)[2m > [22mallows navigation if route has no meta constraints[32m 6[2mms[22m[39m
+ [32mΓ£ô[39m src/router/routerGuard.test.ts[2m > [22mapplyAccessGuard (Router Guard)[2m > [22mblocks navigation and redirects to "/" if permission check fails without explicit redirect[32m 2[2mms[22m[39m
+ [32mΓ£ô[39m src/router/routerGuard.test.ts[2m > [22mapplyAccessGuard (Router Guard)[2m > [22mblocks navigation and redirects to custom route if permission check fails[32m 1[2mms[22m[39m
+ [32mΓ£ô[39m src/router/routerGuard.test.ts[2m > [22mapplyAccessGuard (Router Guard)[2m > [22mallows navigation if permission check passes[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/router/routerGuard.test.ts[2m > [22mapplyAccessGuard (Router Guard)[2m > [22mblocks navigation if role check fails[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/router/routerGuard.test.ts[2m > [22mapplyAccessGuard (Router Guard)[2m > [22mallows navigation if role check passes[32m 0[2mms[22m[39m
+ [32mΓ£ô[39m src/provider/AccessGuardProvider.test.ts[2m > [22mAccessGuardProvider[2m > [22mprovides user data to descendant components[32m 12[2mms[22m[39m
+ [32mΓ£ô[39m src/provider/AccessGuardProvider.test.ts[2m > [22mAccessGuardProvider[2m > [22mrenders default slot[32m 7[2mms[22m[39m
+ [32mΓ£ô[39m src/composables/useAccessGuard.test.ts[2m > [22museAccessGuard[2m > [22mthrows an error if used outside of AccessGuardProvider[32m 9[2mms[22m[39m
+ [32mΓ£ô[39m src/composables/useAccessGuard.test.ts[2m > [22museAccessGuard[2m > [22mprovides can, cannot, and hasRole functions[32m 4[2mms[22m[39m
+ [32mΓ£ô[39m src/composables/useAccessGuard.test.ts[2m > [22museAccessGuard[2m > [22mpermission and role checking[2m > [22mchecks permissions using "can"[32m 2[2mms[22m[39m
+ [32mΓ£ô[39m src/composables/useAccessGuard.test.ts[2m > [22museAccessGuard[2m > [22mpermission and role checking[2m > [22mchecks inverse permissions using "cannot"[32m 1[2mms[22m[39m
+ [32mΓ£ô[39m src/composables/useAccessGuard.test.ts[2m > [22museAccessGuard[2m > [22mpermission and role checking[2m > [22mchecks roles using "hasRole"[32m 1[2mms[22m[39m
+ [31m├ù[39m src/directive/can.test.ts[2m > [22mvCan Directive[2m > [22mshows element if user has permission (string format)[32m 16[2mms[22m[39m
+[31m   ΓåÆ useAccessGuard must be used within AccessGuardProvider[39m
+ [31m├ù[39m src/directive/can.test.ts[2m > [22mvCan Directive[2m > [22mhides element if user lacks permission[32m 1[2mms[22m[39m
+[31m   ΓåÆ useAccessGuard must be used within AccessGuardProvider[39m
+ [31m├ù[39m src/directive/can.test.ts[2m > [22mvCan Directive[2m > [22msupports array of permissions (defaults to "any" mode)[32m 2[2mms[22m[39m
+[31m   ΓåÆ useAccessGuard must be used within AccessGuardProvider[39m
+ [31m├ù[39m src/directive/can.test.ts[2m > [22mvCan Directive[2m > [22msupports object syntax with mode "all"[32m 2[2mms[22m[39m
+[31m   ΓåÆ useAccessGuard must be used within AccessGuardProvider[39m
+ [31m├ù[39m src/directive/can.test.ts[2m > [22mvCan Directive[2m > [22mdoes react to permission changes (reactivity)[32m 4[2mms[22m[39m
+[31m   ΓåÆ useAccessGuard must be used within AccessGuardProvider[39m
+ [32mΓ£ô[39m src/components/Guard.test.ts[2m > [22mGuard Component[2m > [22mrenders slot content if user has the correct permission[32m 23[2mms[22m[39m
+ [32mΓ£ô[39m src/components/Guard.test.ts[2m > [22mGuard Component[2m > [22mdoes not render slot content if user lacks the permission[32m 2[2mms[22m[39m
+ [32mΓ£ô[39m src/components/Guard.test.ts[2m > [22mGuard Component[2m > [22mrenders slot content if user has the correct role[32m 2[2mms[22m[39m
+ [32mΓ£ô[39m src/components/Guard.test.ts[2m > [22mGuard Component[2m > [22mhandles arrays and mode="all"[32m 1[2mms[22m[39m
+ [32mΓ£ô[39m src/components/Guard.test.ts[2m > [22mGuard Component[2m > [22mrenders by default if neither permission nor role is provided[32m 1[2mms[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m5 passed[39m[22m[90m (6)[39m
+[2m      Tests [22m [1m[31m5 failed[39m[22m[2m | [22m[1m[32m31 passed[39m[22m[90m (36)[39m
+[2m   Start at [22m 10:33:06
+[2m   Duration [22m 980ms[2m (transform 320ms, setup 0ms, import 910ms, tests 110ms, environment 3.76s)[22m
+
