@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./assets/logo.png" alt="AccessGuard Logo" width="300" />
+</div>
+
 # @sawalabs/vue-accessguard
 
 The **vue-accessguard** library is a robust, lightweight **Role-Based Access Control (RBAC)** solution for **Vue 3** applications. It provides granular control over UI rendering and module protection using Directives, Components, and Composables for protecting views depending on user *roles* or *permissions*. It supports dynamic **Wildcard Matching** (e.g. `*` for Super Admin or `resource:*` for namespaces).
