@@ -1,15 +1,15 @@
 {
-  "name": "accessguard",
+  "name": "vue-accessguard",
   "private": false,
   "version": "1.0.0",
   "type": "module",
-  "main": "dist/access-guard.umd.js",
-  "module": "dist/access-guard.es.js",
+  "main": "dist/vue-access-guard.umd.js",
+  "module": "dist/vue-access-guard.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/access-guard.es.js",
-      "require": "./dist/access-guard.umd.js"
+      "import": "./dist/vue-access-guard.es.js",
+      "require": "./dist/vue-access-guard.umd.js"
     }
   },
   "scripts": {
@@ -18,7 +18,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.25"
+    "vue": "^3.5.25",
+    "vue-router": "^5.0.3"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
