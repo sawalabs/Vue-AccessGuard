@@ -1,0 +1,62 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction / Core Concepts" />
+
+# AccessGuard: Core Concepts
+
+Welcome to the Storybook documentation for **@sawalabs/vue-accessguard**. This guide will help you understand the core concepts behind the library before you try out the components.
+
+AccessGuard is a Role-Based Access Control (RBAC) library designed to help you conditionally show or hide UI elements based on the permissions or roles of the currently logged-in user.
+
+---
+
+## 1. Context: The `AccessGuardProvider`
+
+For the library to work seamlessly, you must wrap your app with the `<AccessGuardProvider>`. This sets up the Vue inject/provide context.
+
+The provider accepts a **`user`** prop, which acts as the "source of truth".
+
+```ts
+const user = {
+  roles: ["editor", "subscriber"],
+  permissions: ["post:read", "post:write"],
+};
+```
+
+Whenever you interact with the UI in this Storybook, you will see a control panel allowing you to mock the `user` object. Changing it will immediately update the component previews!
+
+---
+
+## 2. `permissions` vs `roles`
+
+### Permissions (`permission`)
+
+Permissions are highly specific, action-oriented strings describing what an entity can _do_ (e.g., `'article:read'`, `'post:delete'`).
+
+- **When to use?** Protecting specific sub-components like a "Delete" button, an "Edit" link, or a specialized tab.
+
+### Roles (`role`)
+
+Roles represent generalized groups assigned to a user (e.g., `'admin'`, `'editor'`). Internally, a role is essentially a group of permissions.
+
+- **When to use?** Protecting massive sections of the application, like rendering the entire "Admin Dashboard", or entire Sidebar menus.
+
+---
+
+## 3. Match Logic: `mode`
+
+Whenever you check against an Array of requirements (e.g., `v-can="['post:edit', 'post:delete']"`), the library needs to know _how_ to evaluate it. This is where the **`mode`** parameter comes in:
+
+- **`any` (Default)**: The check passes if the authenticated user has **at least one** of the requested permissions/roles. This behaves like a logical **OR**.
+- **`all`**: The check strictly passes only if the authenticated user has **every single one** of the requested permissions/roles. This behaves like a logical **AND**.
+
+---
+
+## 4. Wildcard Access (`*`)
+
+To simplify broad policy applications, AccessGuard supports string matching via wildcards:
+
+- **Super Admin Mode**: If the user has a permission exactly matching `['*']`, they will bypass all permission checks.
+- **Domain Namespaces**: If the user has `['article:*']`, any check asking for `article:read`, `article:delete`, or `article:submit` will naturally pass without explicitly defining them for the user.
+
+Now you are ready! Check out the **`v-can` Directive** and **`Guard` Component** in the sidebar to see them in action.

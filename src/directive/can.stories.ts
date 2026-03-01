@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
+import { defineComponent } from "vue";
 
-const Wrapper = {
+const Wrapper = defineComponent({
   template: `
     <div>
       <div v-can="permission" style="padding: 1rem; border: 2px solid green; border-radius: 4px; background: #e6ffe6; color: green; margin-bottom: 20px;">
@@ -25,16 +26,22 @@ const Wrapper = {
       required: true,
     },
   },
-};
+});
 
 const meta: Meta<typeof Wrapper> = {
   title: "RBAC/v-can Directive",
   component: Wrapper,
   tags: ["autodocs"],
   argTypes: {
+    permission: {
+      control: "object",
+      description:
+        "Permissions configuration string/array/object passed into v-can. Hide elements via `display: none` if requirements are not met.",
+    },
     user: {
       control: "object",
-      description: "Mocked user data",
+      description:
+        "Mocked authenticated user injected to the global AccessGuardProvider",
     },
   },
   args: {

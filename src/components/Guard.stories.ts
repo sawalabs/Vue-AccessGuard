@@ -6,15 +6,30 @@ const meta: Meta<typeof Guard> = {
   component: Guard,
   tags: ["autodocs"],
   argTypes: {
-    permission: { control: "text" },
-    role: { control: "text" },
-    mode: { control: "radio", options: ["any", "all"] },
+    permission: {
+      control: "text",
+      description:
+        "Specific action-oriented strings (e.g., 'post:edit'). Rejects render if the user lacks it.",
+    },
+    role: {
+      control: "text",
+      description:
+        "Generalized access level titles (e.g., 'admin'). Rejects render if the user lacks this role.",
+    },
+    mode: {
+      control: "radio",
+      options: ["any", "all"],
+      description:
+        "`any` (default) acts as logical OR when an array is passed, meaning rendering succeeds if the user has **at least one**. `all` acts as logical AND, meaning the user must possess **every item**.",
+    },
+    // @ts-ignore
     user: {
       control: "object",
       description: "Current user data provided by AccessGuardProvider",
     },
   },
   args: {
+    // @ts-ignore
     user: {
       roles: ["editor"],
       permissions: ["post:read", "post:write"],

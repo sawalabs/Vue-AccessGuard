@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/vue3-vite";
 import { setup } from "@storybook/vue3";
+import { computed } from "vue";
 import { vCan } from "../src/directive/can";
 import { AccessGuardProvider } from "../src/provider/AccessGuardProvider";
 
@@ -28,7 +29,9 @@ const preview: Preview = {
       components: { story, AccessGuardProvider },
       setup() {
         // Set a default user if the story doesn't provide one in args
-        const user = context.args.user || { roles: [], permissions: [] };
+        const user = computed(
+          () => context.args.user || { roles: [], permissions: [] },
+        );
         return { user };
       },
       template: `
