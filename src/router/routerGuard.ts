@@ -2,9 +2,11 @@ import type { Router } from "vue-router";
 import { useAccessGuard } from "../composables/useAccessGuard";
 
 export function applyAccessGuard(router: Router) {
-  router.beforeEach((to) => {
-    const { can, hasRole } = useAccessGuard();
+  // Call useAccessGuard() synchronously so it properly hooks into the current Vue setup context
+  const { can, hasRole } = useAccessGuard();
 
+  // Register the guard interceptor and return the remover function
+  return router.beforeEach((to) => {
     const meta = to.meta as any;
 
     if (meta.permission && !can(meta.permission, meta.mode)) {

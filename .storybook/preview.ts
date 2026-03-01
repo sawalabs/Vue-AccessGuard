@@ -1,10 +1,17 @@
 import type { Preview } from "@storybook/vue3-vite";
 import { setup } from "@storybook/vue3";
 import { computed } from "vue";
+import { createRouter, createWebHashHistory } from "vue-router";
 import { vCan } from "../src/directive/can";
 import { AccessGuardProvider } from "../src/provider/AccessGuardProvider";
 
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [],
+});
+
 setup((app: any) => {
+  app.use(router);
   app.directive("can", vCan);
 });
 

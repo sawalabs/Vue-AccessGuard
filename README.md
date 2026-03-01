@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/logo.png" alt="AccessGuard Logo" width="300" />
+  <img src="./public/logo.png" alt="AccessGuard Logo" width="100%" />
 </div>
 
 # @sawalabs/vue-accessguard
