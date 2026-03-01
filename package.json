@@ -1,5 +1,5 @@
 {
-  "name": "@sawalabs/vue-accessguard",
+  "name": "vue-accessguard",
   "publishConfig": {
     "access": "public"
   },
