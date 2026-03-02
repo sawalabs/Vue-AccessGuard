@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/vue-access-guard.umd.js",
   "module": "dist/vue-access-guard.es.js",
