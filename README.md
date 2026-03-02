@@ -14,6 +14,7 @@ The **vue-accessguard** library is a robust, lightweight **Role-Based Access Con
 - 🚀 **`v-can` Directive:** Quickly hide DOM elements using logical checks.
 - 📦 **`<Guard>` Component:** Dynamically render elements reactively if conditions are met.
 - 🛠️ **Composable (`useAccessGuard`):** A unified API to pragmatically validate authorization states within Vue components logic/setup context.
+- 🚦 **Router Guard:** Protect routes using `vue-router` meta fields dynamically based on active user states.
 - ⭐ **Wildcard Permissions:** Simplify access checks using wildcard notation like `admin:*` or globally with `*`.
 - 📘 **Storybook Integrated:** Interactive visual documentation inside `./src/stories`.
 - ⚡ **Vite Support:** ES / UMD modules included. Built tightly with Vue 3 `provide` / `inject`.
@@ -24,7 +25,7 @@ The **vue-accessguard** library is a robust, lightweight **Role-Based Access Con
 Using `pnpm`, `npm` or `yarn`:
 
 ```bash
-pnpm add @sawalabs/vue-accessguard
+pnpm add vue-accessguard
 ```
 
 ## Setup & Configuration
@@ -37,7 +38,7 @@ Include the plugin into your main entry file, like `main.ts`, in order to regist
 ```typescript
 import { createApp } from 'vue'
 import App from './App.vue'
-import { install as AccessGuardPlugin } from '@sawalabs/vue-accessguard'
+import { install as AccessGuardPlugin } from 'vue-accessguard'
 
 const app = createApp(App)
 
@@ -51,7 +52,7 @@ Add `AccessGuardProvider` at the root component or main application layout. Supp
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { AccessGuardProvider, type AccessUser } from '@sawalabs/vue-accessguard'
+import { AccessGuardProvider, type AccessUser } from 'vue-accessguard'
 
 // Example of authentication user state
 const currentUser = ref<AccessUser>({
@@ -111,7 +112,7 @@ The `<Guard>` component conditionally renders DOM trees based on *roles* or *per
 
 ```vue
 <script setup lang="ts">
-import { Guard } from '@sawalabs/vue-accessguard'
+import { Guard } from 'vue-accessguard'
 </script>
 
 <template>
@@ -135,7 +136,7 @@ Used inside `<script setup>` contexts to handle granular logical flows pragmatic
 
 ```vue
 <script setup lang="ts">
-import { useAccessGuard } from '@sawalabs/vue-accessguard'
+import { useAccessGuard } from 'vue-accessguard'
 
 const { can, cannot, hasRole } = useAccessGuard()
 
@@ -160,6 +161,66 @@ const submitForm = () => {
 
 ---
 
+## Router Guard (`applyAccessGuard`)
+
+Seamlessly integrate with `vue-router` to protect entire views and pages from rendering based on route rules. Ensure that `applyAccessGuard` is called synchronously within the `setup` context of your parent component or app layout where the `AccessGuardProvider` is located.
+
+### Setup Route Metadata
+
+Define protection rules directly inside the route `meta` object using `role` or `permission`, alongside an optional `mode`. An optional `redirect` string allows bouncing unauthorized hits back to a specific route, defaulting to `/`.
+
+```typescript
+const routes = [
+  {
+    path: '/',
+    component: () => import('./views/PublicHome.vue')
+  },
+  {
+    path: '/dashboard',
+    component: () => import('./views/Dashboard.vue'),
+    meta: {
+      role: ['admin', 'manager'],
+      mode: 'any', // Optional, defaults to 'any'
+      redirect: '/login'
+    }
+  },
+  {
+    path: '/settings',
+    component: () => import('./views/Settings.vue'),
+    meta: {
+      permission: 'user:edit',
+      redirect: '/not-authorized'
+    }
+  }
+]
+```
+
+### Apply to Router
+
+Provide the initialized router to the guard inside the `<script setup>` where your `<router-view>` is placed alongside `<AccessGuardProvider>`.
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { AccessGuardProvider, applyAccessGuard } from 'vue-accessguard'
+
+const router = useRouter()
+const currentUser = ref({ roles: ['guest'], permissions: [] })
+
+// Mounts the before enter hook to vue-router dynamically
+applyAccessGuard(router)
+</script>
+
+<template>
+  <AccessGuardProvider :user="currentUser">
+    <router-view />
+  </AccessGuardProvider>
+</template>
+```
+
+---
+
 ## Wildcard Matching
 
 Vue-accessguard scales linearly with enterprise needs with built in string-based access matchers:
@@ -170,7 +231,7 @@ Vue-accessguard scales linearly with enterprise needs with built in string-based
 ## Storybook
 
 Interactive visual documentation is available online:
-👉 **[View Live Storybook Documentation](https://sawalabs.github.io/Vue-AccessGuard/)**
+👉 **[View Live Storybook Documentation](https://<your-username>.github.io/Vue-AccessGuard/)**
 
 ### Running Locally
 
